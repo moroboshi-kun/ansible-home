@@ -1,0 +1,25 @@
+---
+core_packages:
+  - build-essential
+  - gdb
+  - ddd
+  - dkms
+  - fwupd
+  - git
+  - git-lfs
+  - flex
+  - bison
+  - perl
+  - clang
+  - cmake
+  - python3-pip
+  - python3-venv
+  - bpython
+  - ptpython
+  - curl
+  - ca-certificates
+  - gpg
+  - vim-nox
+  - ranger
+  - mc
+  - htop
