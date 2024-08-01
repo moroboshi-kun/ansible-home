@@ -2,3 +2,6 @@
 
 # virtual environment
 venv/*
+
+# Vagrant environment
+.vagrant/*
