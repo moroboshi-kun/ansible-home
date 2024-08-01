@@ -1,0 +1,5 @@
+---
+- name: Configure desktop functionality
+  hosts: all
+  roles:
+    - common
