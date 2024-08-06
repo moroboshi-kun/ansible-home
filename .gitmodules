@@ -1,0 +1,3 @@
+[submodule "roles/common/files/dot_files"]
+	path = roles/common/files/dot_files
+	url = https://github.com/moroboshi-kun/dot_files.git
