@@ -1,0 +1,45 @@
+---
+- name: Install Powerline and required packages
+  apt:
+    name:
+      - powerline
+      - powerline-gitstatus
+      - fonts-powerline
+      - git
+      - curl
+    state: present
+    update_cache: yes
+    cache_valid_time: 600
+
+- name: Download Nerd Fonts repository
+  git:
+    repo: 'https://github.com/ryanoasis/nerd-fonts.git'
+    dest: '/usr/local/src/nerd-fonts'
+    version: master
+
+- name: Install Patched Nerd Fonts
+  command: ./install.sh
+  args:
+    chdir: /usr/local/src/nerd-fonts
+    creates: /usr/local/src/nerd-fonts/fonts
+
+- name: Update font cache
+  command: fc-cache -fv
+
+- name: Ensure Powerline is configured for bash
+  lineinfile:
+    path: ~/.bashrc
+    line: 'if [ -f `which powerline-daemon` ]; then powerline-daemon -q; fi'
+    state: present
+
+- name: Add Powerline shell prompt to bashrc
+  lineinfile:
+    path: ~/.bashrc
+    line: 'if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then source /usr/share/powerline/bindings/bash/powerline.sh; fi'
+    state: present
+
+- name: Reload bash profile
+  shell: source ~/.bashrc
+  args:
+    executable: /bin/bash
+
