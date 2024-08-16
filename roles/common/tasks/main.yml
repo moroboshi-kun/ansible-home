@@ -1,2 +1,4 @@
 ---
 - import_tasks: core_packages.yml
+- import_tasks: powerline.yml
+- import_tasks: ssh_keys.yml

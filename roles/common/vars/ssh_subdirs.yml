@@ -1,0 +1,8 @@
+---
+ssh_subdirs:
+  - ansible
+  - bitbucket
+  - github
+  - gitlab
+  - local
+  - remote
