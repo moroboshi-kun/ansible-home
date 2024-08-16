@@ -18,7 +18,7 @@
     path: "{{ ansible_env.HOME }}/.ssh/{{ item }}/id_ed25519"
     type: ed25519
     comment: "{{ ansible_user_id }}"
-    size: 4096  # Although size is generally not applicable to ed25519, it's included based on your requirement
+    size: 4096
   loop: "{{ ssh_subdirs }}"
   become: true
   become_user: "{{ ansible_user }}"
