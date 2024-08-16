@@ -1,0 +1,25 @@
+---
+ 
+- name: Include list of subdirectories to create
+  include_vars:
+    file: ../vars/ssh_subdirs.yml
+
+- name: Create .ssh subdirectories with appropriate permissions
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
+    state: directory
+    mode: '0700'
+  loop: "{{ ssh_subdirs }}"
+  become: true
+  become_user: "{{ ansible_user }}"
+
+- name: Generate SSH keys in each subdirectory
+  community.crypto.openssh_keypair:
+    path: "{{ ansible_env.HOME }}/.ssh/{{ item }}/id_ed25519"
+    type: ed25519
+    comment: "{{ ansible_user_id }}"
+    size: 4096  # Although size is generally not applicable to ed25519, it's included based on your requirement
+  loop: "{{ ssh_subdirs }}"
+  become: true
+  become_user: "{{ ansible_user }}"
+

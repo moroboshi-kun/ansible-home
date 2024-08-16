@@ -1,5 +1,6 @@
 ---
 - name: Update package cache
+  become: true
   ansible.builtin.apt:
     update_cache: true
   
@@ -8,6 +9,7 @@
     file: ../vars/core_packages.yml
 
 - name: Install core packages
+  become: true
   ansible.builtin.apt:
     name: "{{ core_packages }}"
     state: present
