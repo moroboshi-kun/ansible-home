@@ -1,2 +1,3 @@
 ---
 - import_tasks: core_packages.yml
+- import_tasks: powerline.yml
