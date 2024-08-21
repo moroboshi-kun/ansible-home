@@ -1,0 +1,4 @@
+---
+# Default Ubuntu release, which can be overridden by Ansible facts or variables
+ansible_distribution_release: "jammy"
+

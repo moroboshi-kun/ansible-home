@@ -1,0 +1,31 @@
+---
+- name: Install prerequisites
+  become: true
+  apt:
+    name: 
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - lsb-release
+    state: present
+    update_cache: yes
+
+- name: Add Oracle VirtualBox public key
+  become: true
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    state: present
+
+- name: Add VirtualBox repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
+    state: present
+
+- name: Install VirtualBox
+  become: true
+  apt:
+    name: "{{ virtualbox_package }}"
+    state: present
+    update_cache: yes
+
