@@ -1,8 +1,11 @@
 ---
 ssh_subdirs:
   - ansible
-  - bitbucket
-  - github
-  - gitlab
+  - bitbucket/personal
+  - bitbucket/work
+  - github/onsokumaru
+  - github/moroboshi
+  - gitlab/animalchin
+  - gitlab/moroboshi
   - local
   - remote

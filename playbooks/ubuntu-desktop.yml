@@ -3,3 +3,7 @@
   hosts: all
   roles:
     - common
+    - docker
+    - virtualbox
+    - vagrant
+    - terraform
