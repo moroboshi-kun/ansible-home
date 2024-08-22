@@ -6,20 +6,18 @@
 
 - name: Create .ssh subdirectories with appropriate permissions
   file:
-    path: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
+    path: "/home/{{ ansible_user }}/.ssh/{{ item }}"
     state: directory
     mode: '0700'
   loop: "{{ ssh_subdirs }}"
-  become: true
   become_user: "{{ ansible_user }}"
 
 - name: Generate SSH keys in each subdirectory
   community.crypto.openssh_keypair:
-    path: "{{ ansible_env.HOME }}/.ssh/{{ item }}/id_ed25519"
+    path: "/home/{{ ansible_user }}/.ssh/{{ item }}/id_ed25519"
     type: ed25519
     comment: "{{ ansible_user_id }}"
     size: 4096
   loop: "{{ ssh_subdirs }}"
-  become: true
   become_user: "{{ ansible_user }}"
 

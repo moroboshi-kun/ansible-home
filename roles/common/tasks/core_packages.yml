@@ -1,15 +1,17 @@
 ---
-- name: Update package cache
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-  
 - name: Include list of packages to install
   include_vars:
     file: ../vars/core_packages.yml
 
+- name: Update package cache
+  ansible.builtin.apt:
+    update_cache: true
+  
+# - name: Include list of packages to install
+#   include_vars:
+#     file: ../vars/core_packages.yml
+
 - name: Install core packages
-  become: true
   ansible.builtin.apt:
     name: "{{ core_packages }}"
     state: present

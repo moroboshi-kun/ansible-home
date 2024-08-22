@@ -1,6 +1,7 @@
 ---
 - name: Configure desktop functionality
   hosts: all
+  become: true
   roles:
     - common
     - docker
