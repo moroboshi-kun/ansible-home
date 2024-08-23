@@ -1,0 +1,26 @@
+---
+- name: Install NVM (Node Version Manager)
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  args:
+    executable: /bin/bash
+  environment:
+    HOME: "/home/{{ ansible_user }}"
+  become: false
+  changed_when: false
+
+- name: Ensure NVM is loaded
+  shell: |
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm install --lts
+    nvm use --lts
+  args:
+    executable: /bin/bash
+  environment:
+    HOME: "/home/{{ ansible_user }}"
+  become: false
+  changed_when: false
+

@@ -5,3 +5,7 @@
     executable: /bin/bash
   when: ansible_user == 'root'
 
+- name: Source bashrc
+  ansible.builtin.shell: source /home/{{ ansible_user }}/.bashrc
+  args:
+    executable: /bin/bash
