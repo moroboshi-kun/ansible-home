@@ -1,0 +1,7 @@
+---
+- name: Refresh shell environment
+  ansible.builtin.shell: source ~/.profile
+  args:
+    executable: /bin/bash
+  when: ansible_user == 'root'
+
