@@ -6,3 +6,4 @@
 - import_tasks: rust.yml
 - import_tasks: nvm.yml
 - import_tasks: neovim.yml
+- import_tasks: lazygit.yml
