@@ -9,14 +9,20 @@
     state: present
     update_cache: yes
 
-- name: Add Oracle VirtualBox public key
-  apt_key:
+# - name: Add Oracle VirtualBox public key
+#   apt_key:
+#     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+#     state: present
+
+- name: Download Oracle VirtualBox public GPG key
+  ansible.builtin.get_url:
     url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-    state: present
+    dest: /etc/apt/keyrings/virtualbox.asc
+    mode: '0644'
 
 - name: Add VirtualBox repository
   apt_repository:
-    repo: "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/virtualbox.asc] https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     state: present
 
 - name: Install VirtualBox
