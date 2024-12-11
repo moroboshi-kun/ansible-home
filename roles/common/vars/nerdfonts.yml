@@ -1,0 +1,12 @@
+---
+nerdfont_urls:
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/NerdFontsSymbolsOnly.zip", filename: "NFSymbolsOnly.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SourceCodePro.zip", filename: "SourceCodePro.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/UbuntuMono.zip", filename: "UbuntuMono.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Meslo.zip", filename: "Meslo.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip", filename: "JetBrainsMono.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip", filename: "FiraMono.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip", filename: "FiraCode.zip"}
+  - { url: "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/DejaVuSansMono.zip", filename: "DejaVuSansMono.zip"}
+  # - "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/DejaVuSansMono.zip"
+

@@ -8,13 +8,14 @@
     update_cache: yes
 
 - name: Add HashiCorp GPG key
-  ansible.builtin.apt_key:
-    url: "{{ gpg_key_url }}"
-    state: present
+  ansible.builtin.get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /etc/apt/keyrings/vagrant.asc
+    mode: '0644'
 
 - name: Add HashiCorp repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64] {{ hashicorp_repo_url }} {{ ansible_distribution_release }} main"
+    repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/vagrant.asc] {{ hashicorp_repo_url }} {{ ansible_distribution_release }} main"
     state: present
     update_cache: yes
 

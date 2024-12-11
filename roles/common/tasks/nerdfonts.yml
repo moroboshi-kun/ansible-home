@@ -1,0 +1,31 @@
+---
+- name: Get list of desired Nerd Fonts
+  ansible.builtin.include_vars:
+    file: ../vars/nerdfonts.yml
+
+- name: Download Nerdfonts
+  become: false
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: "/tmp/{{ item.filename }}"
+    mode: '0644'
+  loop: "{{ nerdfont_urls }}"
+
+- name: Create local fonts directory
+  become: false
+  ansible.builtin.file:
+    path: /home/{{ ansible_user }}/.local/share/fonts
+    state: directory
+    mode: '0755'
+
+- name: Unpack Nerdfonts to local fonts directory
+  become: false
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ item.filename }}"
+    dest: "/home/{{ ansible_user }}/.local/share/fonts"
+    remote_src: yes
+  loop: "{{ nerdfont_urls }}"
+
+- name: Update the font cache
+  become: false
+  command: fc-cache -fv

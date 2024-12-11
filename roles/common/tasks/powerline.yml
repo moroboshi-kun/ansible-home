@@ -11,18 +11,19 @@
     update_cache: yes
     cache_valid_time: 600
 
-- name: Download Nerd Fonts repository
-  git:
-    repo: 'https://github.com/ryanoasis/nerd-fonts.git'
-    depth: 1
-    dest: '/usr/local/src/nerd-fonts'
-    version: master
+# - name: Download Nerd Fonts repository
+#   git:
+#     repo: 'https://github.com/ryanoasis/nerd-fonts.git'
+#     depth: 1
+#     dest: '/usr/local/src/nerd-fonts'
+#     version: master
 
-- name: Install Patched Nerd Fonts
-  command: ./install.sh
-  args:
-    chdir: /usr/local/src/nerd-fonts
-    creates: /usr/local/src/nerd-fonts/fonts
+# - name: Install Patched Nerd Fonts
+#   become: false
+#   command: ./install.sh
+#   args:
+#     chdir: /usr/local/src/nerd-fonts
+    # creates: /usr/local/src/nerd-fonts/fonts
 
 - name: Update font cache
   become: false

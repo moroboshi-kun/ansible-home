@@ -1,0 +1,21 @@
+---
+- name: Download Neovim v9.5.0 binary
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
+    dest: /tmp
+    mode: 0644
+
+- name: Unpack to /opt directory
+  ansible.builtin.unarchive:
+    src: /tmp/nvim-linux64.tar.gz
+    dest: /opt
+    remote_src: yes
+
+- name: Add Neovim binary to PATH
+  ansible.builtin.lineinfile:
+    path: "/home/{{ ansible_user }}/.bashrc"
+    line: 'export PATH="$PATH:/opt/nvim-linux64/bin"'
+    insertafter: EOF
+    owner: "{{ ansible_user }}"
+    mode: '0644'
+  notify: Source bashrc

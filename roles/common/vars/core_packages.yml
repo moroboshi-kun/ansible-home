@@ -23,3 +23,5 @@ core_packages:
   - ranger
   - mc
   - htop
+  - ripgrep
+  - tree

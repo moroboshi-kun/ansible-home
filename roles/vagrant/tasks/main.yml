@@ -2,6 +2,7 @@
 - name: Install dependencies
   apt:
     name: 
+      - wget
       - software-properties-common
       - apt-transport-https
       - ca-certificates
@@ -10,14 +11,16 @@
     update_cache: yes
 
 - name: Add HashiCorp GPG key
-  apt_key:
+  ansible.builtin.get_url:
     url: https://apt.releases.hashicorp.com/gpg
-    state: present
+    dest: /etc/apt/keyrings/vagrant.asc
+    mode: '0644'
 
 - name: Add HashiCorp repository
-  apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
-    state: present
+  ansible.builtin.command: |
+    echo "deb [signed-by=/etc/apt/keyrings/vagrant.asc] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
+  args:
+    creates: /etc/apt/sources.list.d/hashicorp.list
 
 - name: Update apt cache
   apt:
