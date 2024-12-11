@@ -24,3 +24,4 @@ core_packages:
   - mc
   - htop
   - ripgrep
+  - tree
